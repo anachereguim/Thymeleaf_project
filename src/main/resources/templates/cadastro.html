@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Cadastro de pessoas</title>
+</head>
+<nav class="navbar bg-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/cadastro">Cadastro de pessoas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Cadastro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/cadastro">Página inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/pessoas">Lista</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<body>
+<br>
+<br>
+<form class="row g-3" method="POST" action="/cadastro" th:object="${task}">
+    <input type="hidden" th:value="${task.id}" name="id" />
+    <div class="row g-3">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Primeiro nome" aria-label="First name" name="name" th:value="${task.name}">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Sobrenome" aria-label="Last name" name="lastName" th:value="${task.lastName}">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail4" name="email" th:value="${task.email}">
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="inputPassword4" name="password" th:value="${task.password}">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Endereço</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Rua Tomás, 34" name="address" th:value="${task.address}">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress2" class="form-label">Endereço 2</label>
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartamento, casa dos fundos ou andar" name="address2" th:value="${task.address2}">
+    </div>
+    <div class="col-md-6">
+        <label for="inputCity" class="form-label">Cidade</label>
+        <input type="text" class="form-control" id="inputCity" name="city" th:value="${task.city}">
+    </div>
+    <div class="col-md-4">
+        <label for="inputState" class="form-label">Estado</label>
+        <select id="inputState" class="form-select" name="state" th:value="${task.state}">
+            <option selected>Escolha...</option>
+            <option>São Paulo</option>
+            <option>Rio de Janeiro</option>
+            <option>Minas Gerais</option>
+            <option>Espírito Santo</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="inputZip" class="form-label">Cep</label>
+        <input type="text" class="form-control" id="inputZip" name="zipcode" th:value="${task.zipcode}">
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+                Lembrar-me
+            </label>
+        </div>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </div>
+</form>
+</body>
+</html>
